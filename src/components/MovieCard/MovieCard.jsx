@@ -46,7 +46,7 @@ export default function MovieCard({ movieInfo }) {
       <div>
         <h3>Aditional information</h3>
         <NavLink to={`/movies/${movieInfo}/cast`}>Cast</NavLink>
-        <NavLink to={'/movies/:movieId/reviews'}>Reviews</NavLink>
+        <NavLink to={'/movies/${movieInfo}/reviews'}>Reviews</NavLink>
       </div>
     </section>
   );

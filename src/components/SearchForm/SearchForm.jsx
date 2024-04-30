@@ -31,7 +31,7 @@ export default function SearchForm({ onSubmitForm }) {
 
     onSubmitForm(query);
 
-    // return setQuery('');
+    return setQuery('');
   };
 
   return (
