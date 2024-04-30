@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 
 import s from './MoviesLayout.module.scss';
+import NoPosterPhoto from '../../images/pngwing.com.png';
 
 const MoviesLayout = ({ arrayOfMovies }) => {
-//   console.log('arrayOfMovies', arrayOfMovies);
+  //   console.log('arrayOfMovies', arrayOfMovies);
   return (
     <ul className={s.list}>
       {/* {arrayOfMovies.map(movie => (
@@ -25,21 +26,26 @@ const MoviesLayout = ({ arrayOfMovies }) => {
           nameOfMovie = movie.name;
         }
 
+        let poster = NoPosterPhoto;
+        if (movie.poster_path) {
+          poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        }
+
         return (
           <li className={s.listItem} key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
+            <Link className={s.linkItem} to={`/movie/${movie.id}`}>
               <section className={s.thumbImg}>
                 <img
                   className={s.imgItem}
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  src={poster}
                   alt={movie.original_title}
                 />
-
-                <NavLink className={s.textLink} to={`/movie/${movie.id}`}>
-                  {nameOfMovie}/
-                </NavLink>
               </section>
             </Link>
+
+            <NavLink className={s.textLink} to={`/movie/${movie.id}`}>
+              {nameOfMovie}
+            </NavLink>
           </li>
         );
       })}

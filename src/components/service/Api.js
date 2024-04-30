@@ -11,7 +11,8 @@ const options = {
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
-//1
+// -- 1
+
 // export const getPopularMoviesFromApi = () => {
 //   const URL = `${BASE_URL}trending/all/day?language=en-US`;
 
@@ -30,9 +31,19 @@ export const getPopularMoviesFromApi = () => {
     .catch(err => console.error(err));
 };
 
-//2
+// -- 2
 export const getMovieDetailsFromId = movie_Id => {
   const URL = `${BASE_URL}movie/${movie_Id}?language=en-US`;
+
+  return fetch(URL, options)
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+// -- 3
+
+export const getMovieByQueryFromId = query => {
+  const URL = `${BASE_URL}search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
   return fetch(URL, options)
     .then(response => response.json())

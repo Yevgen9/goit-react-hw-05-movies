@@ -1,0 +1,20 @@
+.form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.buttonForm {
+  margin-right: 5px;
+  border-style: none;
+  border-radius: 3px;
+  padding: 4px;
+}
+
+.buttonForm:hover {
+  background-color: rgba(30, 29, 29, 0.563);
+  color: whitesmoke;
+}
+
+.input {
+  outline: none;
+}

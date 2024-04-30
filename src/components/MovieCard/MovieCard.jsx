@@ -1,5 +1,9 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+// import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import NoPosterPhoto from '../../images/pngwing.com.png';
+import s from './MovieCard.module.scss';
 
 export default function MovieCard({ movieInfo }) {
   console.log('movieInfo  ', movieInfo);
@@ -9,6 +13,11 @@ export default function MovieCard({ movieInfo }) {
     nameOfMovie = movieInfo.title;
   } else {
     nameOfMovie = movieInfo.name;
+  }
+
+  let poster = NoPosterPhoto;
+  if (movieInfo.poster_path) {
+    poster = `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`;
   }
 
   let UserScore = movieInfo.vote_average * 10;
@@ -21,11 +30,8 @@ export default function MovieCard({ movieInfo }) {
         <div>
           <p>Go Back</p>
         </div>
-        <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}
-            alt={movieInfo.original_title}
-          />
+        <div className={s.imagePoster}>
+          <img src={poster} alt={movieInfo.original_title} width="300" />
         </div>
         <div>
           <h1>{nameOfMovie}</h1>
@@ -39,13 +45,13 @@ export default function MovieCard({ movieInfo }) {
 
       <div>
         <h3>Aditional information</h3>
-        <p>Cast</p>
-        <p>Reviews</p>
+        {/* <NavLink to={`/movies/${movieInfo}/cast`}>Cast</NavLink>
+        <NavLink to={'/movies/:movieId/reviews'}>Reviews</NavLink> */}
       </div>
     </section>
   );
 }
 
-// MovieCard.propTypes = {
-//   MovieCard: PropTypes.string.isRequired,
-// };
+MovieCard.propTypes = {
+  MovieCard: PropTypes.string.isRequired,
+};
