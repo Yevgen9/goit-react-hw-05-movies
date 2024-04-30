@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 
 import SearchForm from '../components/SearchForm/SearchForm';
 import Title from '../components/Title/Title';
-import { getMovieByQueryFromId } from '../components/service/Api';
+import { getMovieByQueryFromApi } from '../components/service/Api';
 import MoviesLayout from 'components/MoviesLayout/MoviesLayout';
-import s from '../shared/styles/Movie.module.scss'
+import s from '../shared/styles/Movie.module.scss';
 
 const Movies = () => {
   // const [query, setQuery] = useState(null);
@@ -16,7 +16,7 @@ const Movies = () => {
 
   useEffect(() => {
     if (query) {
-      getMovieByQueryFromId(query).then(data => {
+      getMovieByQueryFromApi(query).then(data => {
         setArrayOfMovies(data.results);
       });
     }
@@ -25,7 +25,7 @@ const Movies = () => {
   const handleSubmitForm = result => {
     setSearchParams({ query: result });
 
-    getMovieByQueryFromId(result).then(data => {
+    getMovieByQueryFromApi(result).then(data => {
       setArrayOfMovies(data.results);
     });
   };

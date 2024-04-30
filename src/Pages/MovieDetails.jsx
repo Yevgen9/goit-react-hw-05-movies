@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieDetailsFromId } from '../components/service/Api';
+import { getMovieDetailsFromApi } from '../components/service/Api';
 import MovieCard from 'components/MovieCard/MovieCard';
 
 export default function MovieDetails() {
@@ -10,7 +10,7 @@ export default function MovieDetails() {
   const [movieInfo, setMovieInfo] = useState(null);
 
   useEffect(() => {
-    getMovieDetailsFromId(movieId).then(data => {
+    getMovieDetailsFromApi(movieId).then(data => {
       // console.log('data', data);
       setMovieInfo(data);
     });

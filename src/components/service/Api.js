@@ -32,7 +32,7 @@ export const getPopularMoviesFromApi = () => {
 };
 
 // -- 2
-export const getMovieDetailsFromId = movie_Id => {
+export const getMovieDetailsFromApi = movie_Id => {
   const URL = `${BASE_URL}movie/${movie_Id}?language=en-US`;
 
   return fetch(URL, options)
@@ -41,9 +41,26 @@ export const getMovieDetailsFromId = movie_Id => {
 };
 
 // -- 3
-
-export const getMovieByQueryFromId = query => {
+export const getMovieByQueryFromApi = query => {
   const URL = `${BASE_URL}search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+
+  return fetch(URL, options)
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+// --4
+export const getMovieCastByFromApi = movie_Id => {
+  const URL = `${BASE_URL}movie/${movie_Id}/credits`;
+
+  return fetch(URL, options)
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
+// -- 5
+export const getMovieReviewsByFromApi = movie_Id => {
+  const URL = `${BASE_URL}movie/${movie_Id}/reviews`;
 
   return fetch(URL, options)
     .then(response => response.json())

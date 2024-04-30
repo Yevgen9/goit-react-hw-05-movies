@@ -33,7 +33,7 @@ const MoviesLayout = ({ arrayOfMovies }) => {
 
         return (
           <li className={s.listItem} key={movie.id}>
-            <Link className={s.linkItem} to={`/movie/${movie.id}`}>
+            <Link className={s.linkItem} to={`/movies/${movie.id}`}>
               <section className={s.thumbImg}>
                 <img
                   className={s.imgItem}
@@ -43,7 +43,7 @@ const MoviesLayout = ({ arrayOfMovies }) => {
               </section>
             </Link>
 
-            <NavLink className={s.textLink} to={`/movie/${movie.id}`}>
+            <NavLink className={s.textLink} to={`/movies/${movie.id}`}>
               {nameOfMovie}
             </NavLink>
           </li>

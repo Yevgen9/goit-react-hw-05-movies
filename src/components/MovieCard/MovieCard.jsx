@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { NavLink, Outlet } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 
 import NoPosterPhoto from '../../images/pngwing.com.png';
 import s from './MovieCard.module.scss';
 
 export default function MovieCard({ movieInfo }) {
-  console.log('movieInfo  ', movieInfo);
+  // console.log('movieInfo  ', movieInfo);
 
   let nameOfMovie = null;
   if (movieInfo.title) {
@@ -45,13 +45,14 @@ export default function MovieCard({ movieInfo }) {
 
       <div>
         <h3>Aditional information</h3>
-        <NavLink to={`/movies/${movieInfo}/cast`}>Cast</NavLink>
-        <NavLink to={'/movies/${movieInfo}/reviews'}>Reviews</NavLink>
+        <NavLink to={`/movies/${movieInfo.id}/cast`}>Cast</NavLink>
+        <NavLink to={`/movies/${movieInfo.id}/reviews`}>Reviews</NavLink>
       </div>
+      <Outlet />
     </section>
   );
 }
 
-MovieCard.propTypes = {
-  MovieCard: PropTypes.string.isRequired,
-};
+// MovieCard.propTypes = {
+//   MovieCard: PropTypes.string.isRequired,
+// };
