@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import NoPosterPhoto from '../../images/pngwing.com.png';
 import s from './MovieCard.module.scss';
@@ -33,31 +33,44 @@ export default function MovieCard({ movieInfo }) {
     <section>
       <div>
         <div>
-          <NavLink to={backLinkHref.current} className={s.buttonHome}>Go Back</NavLink>
+          <NavLink to={backLinkHref.current} className={s.buttonHome}>
+            Go Back
+          </NavLink>
         </div>
         <div className={s.imagePoster}>
-          <img src={poster} alt={movieInfo.original_title} width="300" />
+          <img
+            className={s.posterPhoto}
+            src={poster}
+            alt={movieInfo.original_title}
+            width="300"
+          />
         </div>
-        <div>
-          <h1>{nameOfMovie}</h1>
-          <p>User Score: {UserScore} </p>
-          <h2>Overview: </h2>
-          <p>{Overview}</p>
-          <h3>Genres:</h3>
-          <p>{Genres}</p>
+        <div className={s.movieCardRef}>
+          <h1 className={s.movieCardTitle}>{nameOfMovie}</h1>
+          <h2 className={s.movieCardTitle}>User Score: {UserScore} </h2>
+          <h2 className={s.movieCardTitle}>Overview: </h2>
+          <p className={s.movieCardText}>{Overview}</p>
+          <h3 className={s.movieCardTitle}>Genres:</h3>
+          <p className={s.movieCardText}>{Genres}</p>
         </div>
       </div>
 
-      <div>
+      <div className={s.aditInfoRef}>
         <h3>Aditional information</h3>
-        <NavLink to={`/movies/${movieInfo.id}/cast`}>Cast</NavLink>
-        <NavLink to={`/movies/${movieInfo.id}/reviews`}>Reviews</NavLink>
+        <div className={s.castReviews}>
+          <NavLink className={s.cast} to={`/movies/${movieInfo.id}/cast`}>
+            Cast
+          </NavLink>
+          <NavLink className={s.reviews} to={`/movies/${movieInfo.id}/reviews`}>
+            Reviews
+          </NavLink>
+        </div>
       </div>
       <Outlet />
     </section>
   );
 }
 
-// MovieCard.propTypes = {
-//   MovieCard: PropTypes.string.isRequired,
-// };
+MovieCard.propTypes = {
+  MovieCard: PropTypes.func,
+};

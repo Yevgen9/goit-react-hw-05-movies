@@ -23,6 +23,8 @@ ul {
 h1,
 h2,
 h3,
+h4,
+h5,
 p {
   margin: 0;
   padding: 0;
@@ -31,4 +33,11 @@ p {
 img {
   padding: 0;
   margin: 0;
+}
+
+.App {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid grey;
 }

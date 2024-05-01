@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './SearchForm.module.scss';
@@ -58,4 +58,6 @@ export default function SearchForm({ onSubmitForm }) {
   );
 }
 
-// SearchForm.propTypes = {};
+SearchForm.propTypes = {
+  onSubmitForm: PropTypes.func.isRequired,
+};

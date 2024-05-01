@@ -5,7 +5,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import s from './MoviesLayout.module.scss';
 import NoPosterPhoto from '../../images/pngwing.com.png';
 
-const MoviesLayout = ({ arrayOfMovies }) => {
+export default function MoviesLayout({ arrayOfMovies }) {
   //   console.log('arrayOfMovies', arrayOfMovies);
 
   const location = useLocation();
@@ -54,10 +54,8 @@ const MoviesLayout = ({ arrayOfMovies }) => {
       })}
     </ul>
   );
-};
+}
 
 MoviesLayout.propTypes = {
   arrayOfMovies: PropTypes.array.isRequired,
 };
-
-export default MoviesLayout;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import PropTypes from 'prop-types'
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from 'components/Loader/Loader';
@@ -39,7 +39,7 @@ export default function Reviews() {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={s.reviewsRef}>
       {showLoader && <Loader />}
       <ToastContainer />
 
@@ -48,8 +48,8 @@ export default function Reviews() {
           {reviews.map(review => {
             return (
               <li key={review.id} className={s.reviewsItem}>
-                <h5 className={reviews.title}>{review.author}</h5>
-                <p className={reviews.text}>{review.content}</p>
+                <h5 className={s.reviewsTitle}>{review.author}</h5>
+                <p className={s.reviewsText}>{review.content}</p>
               </li>
             );
           })}
@@ -60,7 +60,3 @@ export default function Reviews() {
     </div>
   );
 }
-
-// Reviews.propTypes = {
-
-// }

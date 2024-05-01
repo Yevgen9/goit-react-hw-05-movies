@@ -4,20 +4,24 @@
   justify-content: center;
   align-items: flex-start;
 
-  margin-left: 30px;
+  // margin-left: 30px;
   margin-top: 30px;
 }
 
 .listItem {
   display: inline-flex;
   flex-direction: column;
+
   margin-bottom: 60px;
   margin-right: 25px;
+
+  text-align: center;
 }
 
 .thumbImg {
   height: 300px;
   width: 200px;
+  border-radius: 3px;
 }
 
 .imgItem {
@@ -34,12 +38,9 @@
   font-weight: 600;
   font-size: 18px;
   width: 200px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-
-// .linkItem {
-//   text-decoration: none;
-// }
 
 .textLink:hover {
   color: rgb(0, 34, 255);

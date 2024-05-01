@@ -28,8 +28,6 @@ const Home = () => {
       {!arrayOfMovies && <p>Sorry, there is no result!</p>}
 
       {arrayOfMovies && <MoviesLayout arrayOfMovies={arrayOfMovies} />}
-
-      <div>Home</div>
     </>
   );
 };
