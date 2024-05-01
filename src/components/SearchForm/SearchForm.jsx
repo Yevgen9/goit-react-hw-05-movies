@@ -16,7 +16,9 @@ export default function SearchForm({ onSubmitForm }) {
     e.preventDefault();
     if (query.trim() === '') {
       //   console.log('empty line');
+
       setQuery('');
+
       return toast.warn('Please, enter text!', {
         position: 'top-center',
         autoClose: 1000,

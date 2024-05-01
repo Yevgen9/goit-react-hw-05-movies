@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import NoPosterPhoto from '../../images/pngwing.com.png';
@@ -7,6 +7,11 @@ import s from './MovieCard.module.scss';
 
 export default function MovieCard({ movieInfo }) {
   // console.log('movieInfo  ', movieInfo);
+
+  const location = useLocation();
+  // console.log(location);
+
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   let nameOfMovie = null;
   if (movieInfo.title) {
@@ -20,7 +25,7 @@ export default function MovieCard({ movieInfo }) {
     poster = `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`;
   }
 
-  let UserScore = movieInfo.vote_average * 10;
+  let UserScore = Number(movieInfo.vote_average * 10).toFixed(0);
   let Overview = movieInfo.overview;
   let Genres = movieInfo.genres.map(genre => genre.name).join(', ');
 
@@ -28,7 +33,7 @@ export default function MovieCard({ movieInfo }) {
     <section>
       <div>
         <div>
-          <p>Go Back</p>
+          <NavLink to={backLinkHref.current} className={s.buttonHome}>Go Back</NavLink>
         </div>
         <div className={s.imagePoster}>
           <img src={poster} alt={movieInfo.original_title} width="300" />

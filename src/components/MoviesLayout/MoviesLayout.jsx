@@ -1,23 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 import s from './MoviesLayout.module.scss';
 import NoPosterPhoto from '../../images/pngwing.com.png';
 
 const MoviesLayout = ({ arrayOfMovies }) => {
   //   console.log('arrayOfMovies', arrayOfMovies);
+
+  const location = useLocation();
+  // console.log(location);
+
   return (
     <ul className={s.list}>
-      {/* {arrayOfMovies.map(movie => (
-        <li key={movie.id}>
-          <p>
-            {movie.title}
-            {movie.name}
-          </p>
-        </li>
-      ))} */}
-
       {arrayOfMovies.map(movie => {
         let nameOfMovie = null;
         if (movie.title) {
@@ -33,7 +28,11 @@ const MoviesLayout = ({ arrayOfMovies }) => {
 
         return (
           <li className={s.listItem} key={movie.id}>
-            <Link className={s.linkItem} to={`/movies/${movie.id}`}>
+            <Link
+              className={s.linkItem}
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+            >
               <section className={s.thumbImg}>
                 <img
                   className={s.imgItem}
@@ -43,7 +42,11 @@ const MoviesLayout = ({ arrayOfMovies }) => {
               </section>
             </Link>
 
-            <NavLink className={s.textLink} to={`/movies/${movie.id}`}>
+            <NavLink
+              className={s.textLink}
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+            >
               {nameOfMovie}
             </NavLink>
           </li>

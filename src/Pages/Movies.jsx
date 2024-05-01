@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
 
 import SearchForm from '../components/SearchForm/SearchForm';
 import Title from '../components/Title/Title';
@@ -14,20 +15,30 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
+  const [showLoader, setShowLoader] = useState(false);
+
   useEffect(() => {
     if (query) {
-      getMovieByQueryFromApi(query).then(data => {
-        setArrayOfMovies(data.results);
-      });
+      setShowLoader(true);
+
+      getMovieByQueryFromApi(query)
+        .then(data => {
+          setArrayOfMovies(data.results);
+        })
+        .finally(() => setShowLoader(false));
     }
   }, [query]);
 
   const handleSubmitForm = result => {
     setSearchParams({ query: result });
 
-    getMovieByQueryFromApi(result).then(data => {
-      setArrayOfMovies(data.results);
-    });
+    setShowLoader(true);
+
+    getMovieByQueryFromApi(result)
+      .then(data => {
+        setArrayOfMovies(data.results);
+      })
+      .finally(() => setShowLoader(false));
   };
 
   // const handleSubmitForm = result => {
@@ -42,6 +53,8 @@ const Movies = () => {
 
   return (
     <div className={s.sectionForm}>
+      {showLoader && <Loader />}
+
       <Title text="Search movies" />
       <SearchForm onSubmitForm={handleSubmitForm} />
       {arrayOfMovies && <MoviesLayout arrayOfMovies={arrayOfMovies} />}

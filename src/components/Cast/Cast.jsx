@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from 'components/Loader/Loader';
+
 // import PropTypes from 'prop-types'
 
 import { getMovieCastByFromApi } from '../../components/service/Api';
@@ -13,28 +15,36 @@ export default function Cast() {
 
   const [cast, setCast] = useState(null);
 
-  useEffect(() => {
-    getMovieCastByFromApi(movieId).then(data => {
-      // console.log(data);
+  const [showLoader, setShowLoader] = useState(false);
 
-      if (data.cast.length === 0) {
-        return toast.error('Sorry, there is no cast!', {
-          position: 'top-center',
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-      }
-      setCast(data.cast);
-    });
+  useEffect(() => {
+    setShowLoader(true);
+
+    getMovieCastByFromApi(movieId)
+      .then(data => {
+        // console.log(data);
+
+        if (data.cast.length === 0) {
+          return toast.error('Sorry, there is no cast!', {
+            position: 'top-center',
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+          });
+        }
+        setCast(data.cast);
+      })
+      .finally(() => setShowLoader(false));
   }, [movieId]);
 
   return (
     <div>
+      {showLoader && <Loader />}
+
       <ToastContainer />
       {cast && (
         <ul className={s.castList}>
