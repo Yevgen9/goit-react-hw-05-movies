@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/Loader/Loader';
 
 import SearchForm from '../components/SearchForm/SearchForm';
 import Title from '../components/Title/Title';
 import { getMovieByQueryFromApi } from '../components/service/Api';
 import MoviesLayout from 'components/MoviesLayout/MoviesLayout';
-import s from '../shared/styles/Movie.module.scss';
 
 const Movies = () => {
-  // const [query, setQuery] = useState(null);
   const [arrayOfMovies, setArrayOfMovies] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,18 +39,8 @@ const Movies = () => {
       .finally(() => setShowLoader(false));
   };
 
-  // const handleSubmitForm = result => {
-  //   setQuery(result);
-  //   // console.log(result);
-
-  //   getMovieByQueryFromId(result).then(data => {
-  //     // console.log(data);
-  //     setArrayOfMovies(data.results);
-  //   });
-  // };
-
   return (
-    <div className={s.sectionForm}>
+    <div>
       {showLoader && <Loader />}
 
       <Title text="Search movies" />

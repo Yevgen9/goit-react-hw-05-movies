@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getPopularMoviesFromApi } from '../components/service/Api';
 import MoviesLayout from 'components/MoviesLayout/MoviesLayout';
 import Title from '../components/Title/Title';
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/Loader/Loader';
 
 const Home = () => {
   const [arrayOfMovies, setArrayOfMovies] = useState(null);

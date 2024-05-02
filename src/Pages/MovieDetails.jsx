@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieDetailsFromApi } from '../components/service/Api';
 import MovieCard from 'components/MovieCard/MovieCard';
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/Loader/Loader';
 
 export default function MovieDetails() {
   const { movieId } = useParams();

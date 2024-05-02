@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/Loader/Loader';
 
-import { getMovieReviewsByFromApi } from '../service/Api';
+import { getMovieReviewsByFromApi } from '../../components/service/Api';
 import s from './Reviews.module.scss';
 
 export default function Reviews() {

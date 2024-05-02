@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from 'components/Loader/Loader';
+import Loader from 'shared/Loader/Loader';
 
 // import PropTypes from 'prop-types'
 
