@@ -13,17 +13,19 @@ export default function MovieCard({ movieInfo }) {
 
   const backLinkHref = useRef(location.state?.from ?? '/');
 
-  let nameOfMovie = null;
-  if (movieInfo.title) {
-    nameOfMovie = movieInfo.title;
-  } else {
-    nameOfMovie = movieInfo.name;
-  }
+  // let nameOfMovie = null;
+  // if (movieInfo.title) {
+  //   nameOfMovie = movieInfo.title;
+  // } else {
+  //   nameOfMovie = movieInfo.name;
+  // }
 
-  let poster = NoPosterPhoto;
-  if (movieInfo.poster_path) {
-    poster = `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`;
-  }
+  // let poster = NoPosterPhoto;
+  // if (movieInfo.poster_path) {
+  //   poster = `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`;
+  // }
+
+  const poster = `https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`;
 
   let UserScore = Number(movieInfo.vote_average * 10).toFixed(0);
   let Overview = movieInfo.overview;
@@ -40,13 +42,16 @@ export default function MovieCard({ movieInfo }) {
         <div className={s.imagePoster}>
           <img
             className={s.posterPhoto}
-            src={poster}
+            src={poster ?? NoPosterPhoto}
             alt={movieInfo.original_title}
             width="300"
           />
         </div>
         <div className={s.movieCardRef}>
-          <h1 className={s.movieCardTitle}>{nameOfMovie}</h1>
+          <h1 className={s.movieCardTitle}>
+            {movieInfo.title ?? movieInfo.name}
+          </h1>
+
           <h2 className={s.movieCardTitle}>User Score: {UserScore} </h2>
           <h2 className={s.movieCardTitle}>Overview: </h2>
           <p className={s.movieCardText}>{Overview}</p>

@@ -14,7 +14,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 // -- 1
 
 // export const getPopularMoviesFromApi = () => {
-//   const URL = `${BASE_URL}trending/all/day?language=en-US`;
+//   const URL = `${BASE_URL}movie/popular?language=en-US`;
 
 //   return fetch(URL, options)
 //     .then(response => response.json())
@@ -22,47 +22,60 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 //     .catch(err => console.error(err));
 // };
 
-export const getPopularMoviesFromApi = () => {
+export const getPopularMoviesFromApi = async () => {
   const URL = `${BASE_URL}movie/popular?language=en-US`;
 
-  return fetch(URL, options)
-    .then(response => response.json())
-
-    .catch(err => console.error(err));
+  try {
+    const response = await fetch(URL, options);
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // -- 2
-export const getMovieDetailsFromApi = movie_Id => {
+export const getMovieDetailsFromApi = async movie_Id => {
   const URL = `${BASE_URL}movie/${movie_Id}?language=en-US`;
 
-  return fetch(URL, options)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+  try {
+    const response = await fetch(URL, options);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // -- 3
-export const getMovieByQueryFromApi = query => {
+export const getMovieByQueryFromApi = async query => {
   const URL = `${BASE_URL}search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
-  return fetch(URL, options)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+  try {
+    const response = await fetch(URL, options);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // --4
-export const getMovieCastByFromApi = movie_Id => {
+export const getMovieCastByFromApi = async movie_Id => {
   const URL = `${BASE_URL}movie/${movie_Id}/credits`;
-
-  return fetch(URL, options)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+  try {
+    const response = await fetch(URL, options);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // -- 5
-export const getMovieReviewsByFromApi = movie_Id => {
+export const getMovieReviewsByFromApi = async movie_Id => {
   const URL = `${BASE_URL}movie/${movie_Id}/reviews`;
 
-  return fetch(URL, options)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+  try {
+    const response = await fetch(URL, options);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
