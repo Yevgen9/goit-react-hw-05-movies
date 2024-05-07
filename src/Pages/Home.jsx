@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { getPopularMoviesFromApi } from '../components/service/Api';
 import MoviesLayout from 'components/MoviesLayout/MoviesLayout';
-
+// import Title from 'components/Title/Title';
 import Loader from 'shared/Loader/Loader';
 
 const Home = () => {
@@ -23,6 +23,9 @@ const Home = () => {
   return (
     <>
       {showLoader && <Loader />}
+
+      {/* {arrayOfMovies && <Title text="Trending today" />}
+      {!arrayOfMovies && <p>Sorry, there is no result!</p>} */}
 
       {arrayOfMovies && <MoviesLayout arrayOfMovies={arrayOfMovies} />}
     </>
